@@ -1,5 +1,8 @@
 PANO = $(CSGO)csgo/panorama/code.pbin
 
+airgap:
+	mkdir airgap
+
 extract: airgap/panorama
 
 $(PANO+".bak"):
@@ -7,10 +10,10 @@ $(PANO+".bak"):
 
 backup: $(PANO+".bak")
 
-airgap/panorama: backup
+airgap/panorama: backup airgap
 	unzip -n "$(PANO)" -d ./airgap/
 
-airgap/code.pbin: 
+airgap/code.pbin: airgap
 	zip -r --compression-method store ./airgap/code.pbin ./airgap/panorama/
 
 package: airgap/code.pbin
@@ -29,5 +32,5 @@ reverse:
 	cp "$(PANO+".bak")" "$(PANO)"
 
 clean:
-	rm -r ./airgap/panorama
-	rm ./airgap/code.pbin
+	rm -r ./airgap/
+	mkdir airgap

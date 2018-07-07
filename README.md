@@ -22,3 +22,7 @@ export CSGO="/mnt/d/games/steam/SteamApps/common/Counter-Strike Global Offensive
 ```
 obviously, replacing the path so it's valid for wherever you've installed the game. 
 Remember to end it with a slash
+
+You can then execute `make extract` to put game files inside the airgap, `make insert` to put your
+modifications inside the game files, `make reverse` to restore the game to the state before your 
+changes, and `make clean` to discard your not-yet-inserted changes.
